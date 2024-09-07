@@ -1,0 +1,45 @@
+[package]
+name = "rogue_like_farm"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bevy = { version = "0.14.1", default-features = false, features = [
+  "animation",
+  "bevy_asset",
+  "bevy_state",
+  "bevy_color",
+  "bevy_gilrs",
+  "bevy_winit",
+  "bevy_core_pipeline",
+  "bevy_pbr",
+  "bevy_gltf",
+  "bevy_render",
+  "bevy_sprite",
+  "bevy_ui",
+  "bevy_text",
+  "multi_threaded",
+  "png",
+  "hdr",
+  "x11",
+  "bevy_gizmos",
+  "tonemapping_luts",
+  "smaa_luts",
+  "default_font",
+  "sysinfo_plugin",
+  "webgl2",
+] }
+bevy-inspector-egui = "0.25.2"
+bevy_kira_audio = { version = "0.20.0", features = ["mp3", "settings_loader"] }
+rand = "0.8.5"
+
+# Enable a small amount of optimization in the dev profile.
+[profile.dev]
+opt-level = 1
+
+# Enable a large amount of optimization in the dev profile for dependencies.
+[profile.dev.package."*"]
+opt-level = 3
+
+[target.wasm32-unknown-unknown]
+runner = "wasm-server-runner"
